@@ -19,7 +19,8 @@ def check_inbox(mail):
         email_message = email.message_from_bytes(b)
 
         for header in ['subject', 'to', 'from', 'data']:
-            print(f'{header} : {email_message[header]}')
+            email_header =email_message[header]
+            print(f'{header} : {email_header}')
         for part in email_message.walk():
             if part.get_content_type() == 'text/plain':
                 body = part.get_payload(decode=True)
